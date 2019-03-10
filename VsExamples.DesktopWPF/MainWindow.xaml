@@ -1,0 +1,83 @@
+﻿<RibbonWindow x:Class="VsExamples.DesktopWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VsExamples.DesktopWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <RibbonWindow.Resources>
+        <DataTemplate x:Key="PersonTemplate">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="24"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0">Name</Label>
+                <Label Grid.Row="1" Grid.Column="0">Age</Label>
+                <Label Grid.Row="2" Grid.Column="0">DoB</Label>
+
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Age}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=DateOfBirth}" />
+            </Grid>
+        </DataTemplate>
+    </RibbonWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Ribbon>
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu Label="File">
+                    <RibbonApplicationMenuItem Header="File" ImageSource="/Images/Open.png" />
+                    <RibbonApplicationMenuItem Header="Open" />
+                    <RibbonApplicationMenuItem Header="Save" />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+
+            <RibbonTab Header="File">
+                <RibbonGroup Header="File">
+                    <RibbonButton Label="Download Image" Click="RibbonButton_Click"/>
+                    <RibbonButton Label="Test"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Options">
+                <RibbonGroup Header="File">
+                    <RibbonButton Label="Open"/>
+                    <RibbonButton Label="Test"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0" Name="dgPersons"> 
+                <!--SelectionChanged="DgPersons_SelectionChanged"-->
+
+            </DataGrid>
+
+
+            <ContentControl Content="{Binding ElementName=dgPersons, Path=SelectedItem}" Grid.Column="1" Name="gdPerson"
+                            ContentTemplate="{StaticResource ResourceKey=PersonTemplate}">
+            </ContentControl>
+
+            <ItemsControl Grid.Column="2" ItemsSource="{Binding ElementName=dgPersons, Path=ItemsSource}"
+                          ItemTemplate="{StaticResource ResourceKey=PersonTemplate}">
+            </ItemsControl>
+        </Grid>
+
+
+    </Grid>
+</RibbonWindow>

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "VsExample.CoreConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "jack terry tom",
+      "environmentVariables": {
+        "DotNetCoreEnv": "Development"
+      }
+    }
+  }
+}

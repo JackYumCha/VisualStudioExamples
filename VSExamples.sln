@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExample.CoreConsole", "Vs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExamples.DesktopWPF", "VsExamples.DesktopWPF\VsExamples.DesktopWPF.csproj", "{B3860D9C-7BF9-458F-B5AF-49A0E5A88A48}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExamples.AspRazor", "VsExamples.AspRazor\VsExamples.AspRazor.csproj", "{C9A76D0E-9475-487B-B79C-BC30E5BEC033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExample.AspAPI", "VsExample.AspAPI\VsExample.AspAPI.csproj", "{83AC5C03-5883-4DB0-8671-7B2E0D56F9AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{B3860D9C-7BF9-458F-B5AF-49A0E5A88A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3860D9C-7BF9-458F-B5AF-49A0E5A88A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3860D9C-7BF9-458F-B5AF-49A0E5A88A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A76D0E-9475-487B-B79C-BC30E5BEC033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A76D0E-9475-487B-B79C-BC30E5BEC033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A76D0E-9475-487B-B79C-BC30E5BEC033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A76D0E-9475-487B-B79C-BC30E5BEC033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83AC5C03-5883-4DB0-8671-7B2E0D56F9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83AC5C03-5883-4DB0-8671-7B2E0D56F9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83AC5C03-5883-4DB0-8671-7B2E0D56F9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83AC5C03-5883-4DB0-8671-7B2E0D56F9AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

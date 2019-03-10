@@ -1,0 +1,21 @@
+<p>
+  demo1 works!
+</p>
+<app-datetime #dt1 [dateTime]="myDateTime" (dateTimeChange)="myDateTime = $event"></app-datetime>
+
+<app-datetime #dt2 [dateTime]="myDateTime2" (dateTimeChange)="myDateTime2 = $event"></app-datetime>
+
+ 
+<!-- <div *ngIf="datetimeComponents">
+  From: Component's property: {{datetimeComponents.first.dateTime}}
+</div> -->
+
+<div>
+  From two-way binding: {{myDateTime}}
+</div>
+
+<input type="text" [(ngModel)]="msg.info"/>
+
+<div>
+  property of AppComponent: <input type="text" [(ngModel)]="app.title">
+</div>

@@ -1,3 +1,4 @@
+import { MsgService } from './msg.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'VsExampleWebUI';
+  title = 'VsExampleWebUI2';
+
+  constructor(public msg: MsgService){
+
+  }
+  bntClick(){
+    console.log('click1');
+  }
+
+  bntClick2(){
+    console.log('click1');
+  }
 }

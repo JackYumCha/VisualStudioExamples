@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 20px 0;
+}
+
+div {
+    display: block;
+    >a {
+        cursor: pointer;
+        padding: 2px 2px;
+        margin: 0 10px;
+    }
+    >span {
+        margin: 0 10px;
+        padding: 2px 2px;
+        color: #01A89F;
+    }
+}

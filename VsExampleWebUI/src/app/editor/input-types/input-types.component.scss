@@ -1,0 +1,13 @@
+dialog{
+    >fieldset{
+        padding: 20px;
+        border: 1px solid lightseagreen;
+        border-radius: 10px;
+        background-color: white;
+        >div[buttons]{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+}

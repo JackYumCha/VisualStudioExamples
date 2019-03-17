@@ -1,0 +1,86 @@
+
+<div>
+  <div>Single Option</div>
+  <div>
+    <div *ngFor="let option of options">
+        <input type="radio" 
+          [(ngModel)]="singleOption"
+          name="singleOptionRadio" [value]="option.value" />
+        <label>{{option.name}}</label>
+    </div>
+  </div>
+  <select [(ngModel)]="singleOption">
+    <option *ngFor="let option of options" [value]="option.value">
+      {{option.name}}
+    </option>
+  </select>
+</div>
+<div>
+    <div>Multiple Options</div>
+    <div>
+      <div *ngFor="let option of options">
+          <input type="checkbox" 
+            [ngModel]="multipleOptions|includes:option.value"
+            (ngModelChange)="$event ? multipleOptions.push(option.value) : multipleOptions.splice(multipleOptions.indexOf(option.value), 1)"
+            name="singleOptionRadio" [value]="option.value" />
+          <label>{{option.name}}</label>
+      </div>
+    </div>
+    <div>
+      <label *ngFor="let value of multipleOptions">{{value}}</label>
+    </div>
+</div>
+<div>
+  <div>Text</div>
+  <div>
+    <input type="text" [(ngModel)]="text"/>
+  </div>
+</div>
+
+<div>
+  <div>Number</div>
+  <div>
+    <input type="number" [(ngModel)]="numberValue"/>
+  </div>
+</div>
+<div>
+  <div>Date</div>
+  <div>
+    <input type="date" [(ngModel)]="date"/>
+  </div>
+</div>
+
+<div>
+  <div>Time</div>
+  <div>
+    <input type="time" [(ngModel)]="time"/>
+  </div>
+</div>
+
+<div>
+  <div>Autocomplete Text</div>
+  <datalist id="autocompletelist">
+    <option *ngFor="let option of options" [value]="option.value"></option>
+  </datalist>
+  <input list="autocompletelist"/>
+</div>
+
+<button classic (click)="mydialog.showModal()">Show Dialog</button>
+<dialog #mydialog>
+  <fieldset>
+      <div input>
+          <label>Username</label>
+          <input type="text" name="username"/>
+          <div error-message>Invalid user name!</div>
+        </div>
+        <div input>
+          <label>Password</label>
+          <input type="password" name="password"/> 
+          <div error-message></div>
+        </div>
+        <div buttons>
+          <button classic (click)="mydialog.close()">Close</button>
+          <button classic>Login</button>
+        </div>
+  </fieldset>
+</dialog>

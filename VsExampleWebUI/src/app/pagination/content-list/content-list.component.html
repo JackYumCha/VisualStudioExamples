@@ -1,0 +1,12 @@
+<section items>
+  <ng-container *ngFor="let item of items;let i = index;">
+    <div (click)="onItemSelected(i)" item [attr.selected]="i==itemIndex">
+      <ng-container *ngTemplateOutlet="itemTemplate;context:item">
+
+      </ng-container>
+    </div>
+  </ng-container>
+</section>
+<app-list-paginator [numberOfPages]="numberOfPages" [selectedPage]="selectedPageIndex" 
+(pageChanged)="pageSelected.emit($event)">
+</app-list-paginator>

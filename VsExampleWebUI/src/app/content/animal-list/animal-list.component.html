@@ -1,0 +1,23 @@
+<section list>
+  <div>
+    <h3>List of Animals</h3>
+  </div>
+  <ng-template #animalTemplate let-Name="Name" let-ImageUrl="ImageUrl">
+    <div item>
+      <label>{{Name}}</label>
+      <img [src]="ImageUrl"/>
+    </div>
+  </ng-template>
+  
+  <app-content-list [itemTemplate]="animalTemplate" 
+    [items]="listAnimalResponse | ensureField: 'Items' : [] " 
+    [numberOfPages]="listAnimalResponse | ensureField : 'NumberOfPages': 0"
+    [selectedPageIndex]="listAnimalResponse | ensureField : 'PageIndex': 0"
+    (pageSelected)="listAnimalRequest.PageIndex = $event;listAnimals()"
+    (itemSelected)="selectItem($event)">
+  </app-content-list>
+</section>
+<section item>
+  <router-outlet></router-outlet>
+</section>
+

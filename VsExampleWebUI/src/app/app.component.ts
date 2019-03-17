@@ -1,5 +1,6 @@
 import { MsgService } from './msg.service';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'VsExampleWebUI2';
 
-  constructor(public msg: MsgService){
+  // @HostBinding('attr.hidding') isHidding: boolean;
+
+  constructor(public msg: MsgService, public router: Router){
 
   }
   bntClick(){
@@ -18,5 +21,9 @@ export class AppComponent {
 
   bntClick2(){
     console.log('click1');
+  }
+
+  logout(){
+    this.router.navigate(['login']);
   }
 }

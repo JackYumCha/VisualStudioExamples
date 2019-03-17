@@ -1,0 +1,4 @@
+<div *ngFor="let page of pages">
+  <a *ngIf="page.isLink" (click)="pageClicked(page.pageIndex)">{{page.content}}</a>
+  <span *ngIf="!page.isLink">{{page.content}}</span>
+</div>

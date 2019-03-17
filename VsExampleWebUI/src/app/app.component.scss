@@ -1,0 +1,72 @@
+:host{
+    background-color: grey;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+nav{
+    flex: 0 0 280px;
+    background-color: black; 
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    >div[logo]{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        >img{
+            max-width: 200px;
+            max-height: 200px;
+        }
+    }
+    >ul{
+        color: white;
+        cursor: pointer;
+        margin: 0;
+        padding: 12px;
+        &:hover {
+            background-color: grey;
+        }
+    }
+}
+
+main{
+    flex: 1 1 auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    >header{
+        flex: 0 0 24px;
+        background-color: lightyellow;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        >[spacer]{
+            flex: 1 1 auto;
+        }
+        >a{
+            text-decoration: underline;
+            cursor: pointer;
+            color: blue;
+            &:hover{
+                color: red;
+            }
+        }
+    }
+    >footer{
+        flex: 0 0 24px;
+        background-color: cyan;
+    }
+    >div[body]{
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+// :host[hidding] *{
+//     visibility: hidden;
+// }

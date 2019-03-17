@@ -1,24 +1,34 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
-<h2>Here are some links to help you start: </h2>
-<input type="text" [(ngModel)]="msg.info"/>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav>
+  <div logo>
+      <img src="/assets/img/angular.png"/>
+  </div>
+  <ul routerLink="/">
+    Home
+    <!-- <li></li> -->
+  </ul>
+  <ul routerLink="/app/demo1">
+    Demo 1
+  </ul>
+  <ul routerLink="/app/demo2">
+    Demo 2
+  </ul>
+  <ul routerLink="/app/input">
+    Input
+  </ul>
+  <ul routerLink="/app/animals">
+    Animals
+  </ul>
+</nav>
+<main>
+  <header>
+    <h2>Title of This Project</h2>
+    <div spacer></div>
+    <a (click)="logout()">Logout</a>
+  </header>
+  <div body>
+      <router-outlet></router-outlet>
+  </div>
+  <footer>Data Science Angular Demo 2019</footer>
+</main>
 
-<button (click)="bntClick();bntClick2();title = 'Title After Click';">Test Button</button> 
-<app-demo1></app-demo1>
-<app-demo2></app-demo2>
-<router-outlet></router-outlet>

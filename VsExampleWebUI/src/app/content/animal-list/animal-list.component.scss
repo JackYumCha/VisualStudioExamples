@@ -1,0 +1,26 @@
+:host{
+    display: flex;
+    flex-direction: row;
+}
+
+div[item]{
+    display: flex;
+    flex-direction: column;
+    >img{
+        max-width: 160px;
+        max-height: 160px;
+    }
+}
+
+section[list]{
+    flex: 0 0 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+section[item]{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}

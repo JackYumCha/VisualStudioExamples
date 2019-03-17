@@ -1,0 +1,38 @@
+
+
+<fieldset>
+  <legend>User Login</legend>
+  <div input>
+    <label>Username</label>
+    <input type="text" name="username" #usernameInput [(ngModel)]="loginRequest.Username" [isValid]="loginRequest.Username | required" />
+    <div error-message *ngIf="usernameInput.touched && !(loginRequest.Username | required)">Username is required!</div>
+  </div>
+  <!-- <div input>
+    <label>Email</label>
+    <input type="text" name="email" #emailInput [(ngModel)]="email" [isValid]="email | isEmail" />
+    <div error-message *ngIf="emailInput.touched && !(email | isEmail)">Invalid email!</div>
+  </div>
+  <div input>
+    <label>Your date of birth</label>
+    <input type="date" name="dateOfBirth" #dobInput [min]="minDOB" [max]="maxDOB" [(ngModel)]="dateOfBirth" [isValid]="dateOfBirth | valueRange : minDOB : maxDOB " />
+    <div error-message *ngIf="dobInput.touched && !(dateOfBirth | valueRange : minDOB : maxDOB)">Invalid email!</div>
+  </div>
+  <div input>
+    <label>Validation Number</label>
+    <input type="number" name="validation" #validationInput [(ngModel)]="validationNumber" [isValid]="validationNumber | regexMatch : '^\\d+$'" />
+    <div error-message *ngIf="validationInput.touched && !(validationNumber | regexMatch : '^\\d+$')">Invalid number!</div>
+  </div> -->
+  <div input>
+    <label>Password</label>
+    <input type="password" name="password" #passwordInput [(ngModel)]="loginRequest.PasswordHash" [isValid]="loginRequest.PasswordHash | required"/> 
+    <div error-message *ngIf="passwordInput.touched && !(loginRequest.PasswordHash | required)"></div>
+  </div>
+  <div buttons>
+    <button classic>Register</button>
+    <button [disabled]="controlService.isLoading?true:undefined" classic (click)="login()">Login</button>
+  </div>
+  <div>
+    <app-loader-circle [size]="20" *ngIf="controlService.isLoading"></app-loader-circle> 
+    <label>{{controlService.status}}</label>
+  </div>
+</fieldset>

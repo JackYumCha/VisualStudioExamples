@@ -1,3 +1,4 @@
+import { LoginSingleton } from './../../auth/login-singleton.service';
 import { ControlService } from './../../utils/control.service';
 import { DateUtilsService } from './../../utils/date-utils.service';
 import { Router } from '@angular/router';
@@ -6,6 +7,7 @@ import { Component, OnInit, OnDestroy, ViewChildren, QueryList } from '@angular/
 import { IsValidDirective } from 'src/app/utils/is-valid.directive';
 import { LoginService } from '../login.service';
 import { LoginRequest } from 'src/app/services/mvc-api/datatypes/VsExample.AspAPI.Dtos.LoginRequest';
+import { MD5 } from 'src/app/auth/md5';
 
 @Component({
   selector: 'app-login',
@@ -27,8 +29,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   @ViewChildren(IsValidDirective) inputs: QueryList<IsValidDirective>;
 
-  constructor(public router: Router, public dateService: DateUtilsService, 
-    public loginService: LoginService, public controlService: ControlService) { // public app: AppComponent, 
+  constructor(
+    public router: Router, 
+    public dateService: DateUtilsService, 
+    public loginService: LoginService, 
+    public controlService: ControlService,
+    public loginSingleton: LoginSingleton
+    ) { // public app: AppComponent, 
 
     // this.app.isHidding = true;
 
@@ -49,11 +56,22 @@ export class LoginComponent implements OnInit, OnDestroy {
         return;
       }
     }
+    let payload = {... this.loginRequest};
+    payload.PasswordHash = MD5.encrypt(payload.PasswordHash);
     let success = await this.controlService.load(
-      this.loginService.login(this.loginRequest),
+      this.loginService.login(payload),
       'Calling Login...'
       ).toPromise();
     this.controlService.status = success ? 'Login Succeeded.': 'Login Failed.';
-    if(success) this.router.navigate(['']);
+    if(success) {
+      console.log('target URL:', this.loginSingleton.targetUrl);
+      if(this.loginSingleton.targetUrl){
+        this.router.navigateByUrl(this.loginSingleton.targetUrl);
+      }
+      else{
+        // this.router.navigate(['app','demo1']);
+        this.router.navigate(['']);
+      }
+    }
   }
 }

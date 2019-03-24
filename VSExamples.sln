@@ -21,6 +21,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jack.DataScience", "Jack.Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcAngular.Generator", "..\Jack.DataScience\Jack.DataScience\MvcAngular.Generator\MvcAngular.Generator.csproj", "{0BF7EE16-8693-445A-8AC1-12CD16B81E5A}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "VsExamples.NodeJS", "VsExamples.NodeJS\VsExamples.NodeJS.njsproj", "{1728B401-8850-4FCF-8A4D-961067367234}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Http.Password", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Http.Password\Jack.DataScience.Http.Password.csproj", "{4E810D2D-93E3-467E-A937-5A11F45317DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Http.Jwt", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Http.Jwt\Jack.DataScience.Http.Jwt.csproj", "{7B8443B4-6FEA-4070-9E8C-C56F04523F94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Common", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Common\Jack.DataScience.Common.csproj", "{6A1238FE-E8AA-467D-AF3A-DA7BE9E9BA73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,12 +67,31 @@ Global
 		{0BF7EE16-8693-445A-8AC1-12CD16B81E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BF7EE16-8693-445A-8AC1-12CD16B81E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BF7EE16-8693-445A-8AC1-12CD16B81E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1728B401-8850-4FCF-8A4D-961067367234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1728B401-8850-4FCF-8A4D-961067367234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1728B401-8850-4FCF-8A4D-961067367234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1728B401-8850-4FCF-8A4D-961067367234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E810D2D-93E3-467E-A937-5A11F45317DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E810D2D-93E3-467E-A937-5A11F45317DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E810D2D-93E3-467E-A937-5A11F45317DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E810D2D-93E3-467E-A937-5A11F45317DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8443B4-6FEA-4070-9E8C-C56F04523F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8443B4-6FEA-4070-9E8C-C56F04523F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8443B4-6FEA-4070-9E8C-C56F04523F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8443B4-6FEA-4070-9E8C-C56F04523F94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A1238FE-E8AA-467D-AF3A-DA7BE9E9BA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A1238FE-E8AA-467D-AF3A-DA7BE9E9BA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A1238FE-E8AA-467D-AF3A-DA7BE9E9BA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A1238FE-E8AA-467D-AF3A-DA7BE9E9BA73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0BF7EE16-8693-445A-8AC1-12CD16B81E5A} = {80CBFEE3-77EA-4049-8386-A1108310152A}
+		{4E810D2D-93E3-467E-A937-5A11F45317DC} = {80CBFEE3-77EA-4049-8386-A1108310152A}
+		{7B8443B4-6FEA-4070-9E8C-C56F04523F94} = {80CBFEE3-77EA-4049-8386-A1108310152A}
+		{6A1238FE-E8AA-467D-AF3A-DA7BE9E9BA73} = {80CBFEE3-77EA-4049-8386-A1108310152A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D40CE33-D7AC-4A4A-812A-48AC20FE514D}

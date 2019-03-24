@@ -1,3 +1,11 @@
 <p>
   demo2 works!
 </p>
+
+<ng-container *ngIf="animal1">
+  {{animal1}} -- 
+  {{animal1.Name}} -- 
+  {{animal1.ImageUrl}}
+  <label>{{animal1.Name}}</label>
+  <img [src]="animal1.ImageUrl"/>
+</ng-container>

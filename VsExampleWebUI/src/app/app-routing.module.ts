@@ -1,3 +1,4 @@
+import { AnyAuthGuard, AdministratorAuthGuard, UserAuthGuard } from './auth/auth-guard';
 import { AnimalViewComponent } from './content/animal-view/animal-view.component';
 import { AnimalListComponent } from './content/animal-list/animal-list.component';
 import { AppComponent } from './app.component';
@@ -18,18 +19,22 @@ const routes: Routes = [
   {
     path: 'app',
     component: AppComponent,
+    canActivate: [AnyAuthGuard],
     children: [
       {
         path: 'demo1',
-        component: Demo1Component
+        component: Demo1Component,
+        canActivate: [AnyAuthGuard]
       },
       {
         path: 'demo2',
-        component: Demo2Component
+        component: Demo2Component,
+        canActivate: [AdministratorAuthGuard]
       },
       {
         path: 'input',
-        component: InputTypesComponent
+        component: InputTypesComponent,
+        canActivate: [UserAuthGuard]
       },
       {
         path: 'animals',

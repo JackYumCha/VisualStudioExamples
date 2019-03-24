@@ -10,10 +10,10 @@
   <ul routerLink="/app/demo1">
     Demo 1
   </ul>
-  <ul routerLink="/app/demo2">
+  <ul routerLink="/app/demo2" *ngIf="loginSingleton.token | ensureField: 'Roles': [] | includes: 'Administrator'">
     Demo 2
   </ul>
-  <ul routerLink="/app/input">
+  <ul routerLink="/app/input" *ngIf="loginSingleton.token | ensureField: 'Roles': [] | includes: 'User'">
     Input
   </ul>
   <ul routerLink="/app/animals">

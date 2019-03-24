@@ -18,6 +18,8 @@ import { AnimalListComponent } from './content/animal-list/animal-list.component
 import { AnimalViewComponent } from './content/animal-view/animal-view.component';
 import { ContentListComponent } from './pagination/content-list/content-list.component';
 import { ListPaginatorComponent } from './pagination/list-paginator/list-paginator.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { VxExamplesInterceptor } from './services/vsexamples.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,10 +40,16 @@ import { ListPaginatorComponent } from './pagination/list-paginator/list-paginat
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    UtilsModule
+    UtilsModule,
+    HttpClientModule
   ],
   providers: [
-    MsgService
+    MsgService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: VxExamplesInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [ContainerComponent]
 })

@@ -19,3 +19,13 @@
 <div>
   property of AppComponent: <input type="text" [(ngModel)]="app.title">
 </div>
+
+<button (click)="getAnimal()">Get Animal</button>
+
+<ng-container *ngIf="animal">
+  {{animal}} -- 
+  {{animal.Name}} -- 
+  {{animal.ImageUrl}}
+  <label>{{animal.Name}}</label>
+  <img [src]="domSanitiozer.bypassSecurityTrustUrl(animal.ImageUrl)"/>
+</ng-container>

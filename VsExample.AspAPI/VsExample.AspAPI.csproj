@@ -8,13 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Http.Jwt\Jack.DataScience.Http.Jwt.csproj" />
+    <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Http.Password\Jack.DataScience.Http.Password.csproj" />
     <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\MvcAngular.Generator\MvcAngular.Generator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

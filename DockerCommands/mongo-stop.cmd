@@ -1,0 +1,1 @@
+docker stop mongo-server -t 0

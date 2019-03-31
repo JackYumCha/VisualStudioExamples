@@ -47,3 +47,20 @@ mongo-new
 # 主要应用
 1. 同步数据给别人
 2. 用来回复自己的数据到之前的状态
+
+
+# pgAdmin
+Microsoft SQL Server Client SSMS
+https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017
+Postgres SQL Client
+https://www.pgadmin.org/download/pgadmin-4-windows/
+MySQL Workbench Client
+https://www.mysql.com/products/workbench/
+
+robomongo MongoDB Client
+https://robomongo.org/
+
+Arango Server Installer (No need to install, use docker container instead. Arango comes with native web client.)
+https://www.arangodb.com/download-arangodb-enterprise/install-enterprise
+
+

@@ -1,2 +1,2 @@
-docker pull mysql:5.7.25
+docker pull mysql:8.0.15
 docker volume create mysql-data

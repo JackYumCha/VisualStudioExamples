@@ -2,30 +2,29 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VsExample.Data.SQLServer;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using VsExample.Data.PostgresSQL;
 
-namespace VsExample.Data.Migrations.SQLServerData
+namespace VsExample.Data.Migrations.PostgresSQLData
 {
-    [DbContext(typeof(SQLServerDataContext))]
-    [Migration("20190331110532_SQLServerDataContextMigration")]
-    partial class SQLServerDataContextMigration
+    [DbContext(typeof(PostgresSQLDataContext))]
+    [Migration("20190407041245_PostgresSQLDataContextMigration")]
+    partial class PostgresSQLDataContextMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("VsExample.Data.Entities.AnimalEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Age");
 
@@ -45,8 +44,7 @@ namespace VsExample.Data.Migrations.SQLServerData
             modelBuilder.Entity("VsExample.Data.Entities.FriendShipEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("FromPerson");
 
@@ -64,8 +62,7 @@ namespace VsExample.Data.Migrations.SQLServerData
             modelBuilder.Entity("VsExample.Data.Entities.PersonEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Age");
 

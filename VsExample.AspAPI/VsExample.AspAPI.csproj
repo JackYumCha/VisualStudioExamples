@@ -18,6 +18,7 @@
     <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Http.Jwt\Jack.DataScience.Http.Jwt.csproj" />
     <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Http.Password\Jack.DataScience.Http.Password.csproj" />
     <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\MvcAngular.Generator\MvcAngular.Generator.csproj" />
+    <ProjectReference Include="..\VsExample.Data\VsExample.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

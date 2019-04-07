@@ -9,7 +9,7 @@ using VsExample.Data.MySQL;
 namespace VsExample.Data.Migrations
 {
     [DbContext(typeof(MySQLDataContext))]
-    [Migration("20190331073926_MySQLDataContextMigration")]
+    [Migration("20190407041235_MySQLDataContextMigration")]
     partial class MySQLDataContextMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -6,27 +6,32 @@ using System.Diagnostics;
 using System.Linq;
 using VsExample.Data.Entities;
 using VsExample.Data.MySQL;
+using VsExample.Data.PostgresSQL;
+using VsExample.Data.SQLServer;
 using Xunit;
 
 namespace VsExample.Data.Tests
 {
-    public class MySQLTests
+    public class SQLTests
     {
 
-        private MySQLDataContext BuildContext()
+        private IContainer BuildContainer()
         {
             AutoFacContainer autoFacContainer = new AutoFacContainer();
             autoFacContainer.RegisterOptions<MySQLOptions>();
             autoFacContainer.ContainerBuilder.RegisterModule<MySQLDataModule>();
-            var services = autoFacContainer.ContainerBuilder.Build();
-            var mySQL = services.Resolve<MySQLDataContext>();
-            return mySQL;
+            autoFacContainer.RegisterOptions<PostgresSQLOptions>();
+            autoFacContainer.ContainerBuilder.RegisterModule<PostgresSQLModule>();
+            autoFacContainer.RegisterOptions<SQLServerOptions>();
+            autoFacContainer.ContainerBuilder.RegisterModule<SQLServerModule>();
+            return autoFacContainer.ContainerBuilder.Build();
         }
 
         [Fact(DisplayName = "Generate Data")]
         public void GenerateData()
         {
-            var mySQL = BuildContext();
+            var services = BuildContainer();
+            var mySQL = services.Resolve<MySQLDataContext>();
 
             Random random = new Random();
 
@@ -85,7 +90,8 @@ namespace VsExample.Data.Tests
         [Fact(DisplayName = "Delete Data")]
         public void DeleteData()
         {
-            var mySQL = BuildContext();
+            var services = BuildContainer();
+            var mySQL = services.Resolve<MySQLDataContext>();
 
             mySQL.Animals.RemoveRange(mySQL.Animals.ToList());
 
@@ -99,16 +105,20 @@ namespace VsExample.Data.Tests
         [Fact(DisplayName = "Generate Person Data")]
         public void GeneratePersonData()
         {
-            var mySQL = BuildContext();
+            var services = BuildContainer();
+            var mySQL = services.Resolve<MySQLDataContext>();
+            var postgresSQL = services.Resolve<PostgresSQLDataContext>();
+            var sqlServer = services.Resolve<SQLServerDataContext>();
 
 
             Random random = new Random();
             var names = new string[] { "jack", "terry", "tom", "jake", "cherry", "lily" };
 
+            List<PersonEntity> persons = new List<PersonEntity>();
             for (int i = 0; i < 5000; i++)
             {
                 var days = random.Next(365 * 12);
-                mySQL.Persons.Add(new PersonEntity()
+                persons.Add(new PersonEntity()
                 {
                     Age = (int)(days / 365d),
                     Name = names[random.Next(names.Length)],
@@ -117,7 +127,17 @@ namespace VsExample.Data.Tests
                 });
             }
 
+            persons.ForEach(p => p.Id = 0);
+            mySQL.Persons.AddRange(persons);
             mySQL.SaveChanges();
+
+            persons.ForEach(p => p.Id = 0);
+            postgresSQL.Persons.AddRange(persons);
+            postgresSQL.SaveChanges();
+
+            persons.ForEach(p => p.Id = 0);
+            sqlServer.Persons.AddRange(persons);
+            sqlServer.SaveChanges();
         }
 
 
@@ -125,7 +145,10 @@ namespace VsExample.Data.Tests
         [Fact(DisplayName = "Generate Friend Data")]
         public void GenerateFriendData()
         {
-            var mySQL = BuildContext();
+            var services = BuildContainer();
+            var mySQL = services.Resolve<MySQLDataContext>();
+            var postgresSQL = services.Resolve<PostgresSQLDataContext>();
+            var sqlServer = services.Resolve<SQLServerDataContext>();
 
 
             Random random = new Random();
@@ -137,8 +160,8 @@ namespace VsExample.Data.Tests
             List<FriendShipEntity> list = new List<FriendShipEntity>();
             while (list.Count < 25000)
             {
-                int a = random.Next(count);
-                int b = random.Next(count);
+                int a = random.Next(count) + 1;
+                int b = random.Next(count) + 1;
                 while (b == a)
                 {
                     b = random.Next(count);
@@ -157,8 +180,15 @@ namespace VsExample.Data.Tests
                     list.Add(friend);
                 }
             }
+            list.ForEach(f => f.Id = 0);
             mySQL.FriendShip.AddRange(list);
             mySQL.SaveChanges();
+            list.ForEach(f => f.Id = 0);
+            postgresSQL.FriendShip.AddRange(list);
+            postgresSQL.SaveChanges();
+            list.ForEach(f => f.Id = 0);
+            sqlServer.FriendShip.AddRange(list);
+            sqlServer.SaveChanges();
         }
     }
 }

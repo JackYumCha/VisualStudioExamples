@@ -20,6 +20,9 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 using VsExample.AspAPI.Utils;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using VsExample.Data.MySQL;
+using VsExample.Data.PostgresSQL;
+using VsExample.Data.SQLServer;
 
 namespace VsExample.AspAPI
 {
@@ -47,6 +50,13 @@ namespace VsExample.AspAPI
             autoFacContainer.RegisterOptions<JwtSecretOptions>();
 
             autoFacContainer.ContainerBuilder.RegisterModule<JwtModule>();
+
+            autoFacContainer.RegisterOptions<MySQLOptions>();
+            autoFacContainer.ContainerBuilder.RegisterModule<MySQLDataModule>();
+            autoFacContainer.RegisterOptions<PostgresSQLOptions>();
+            autoFacContainer.ContainerBuilder.RegisterModule<PostgresSQLModule>();
+            autoFacContainer.RegisterOptions<SQLServerOptions>();
+            autoFacContainer.ContainerBuilder.RegisterModule<SQLServerModule>();
 
             autoFacContainer.ContainerBuilder.Register(context =>
             {

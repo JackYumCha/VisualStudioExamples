@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Common\Jack.DataScience.Common.csproj" />
+    <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Data.MongoDB\Jack.DataScience.Data.MongoDB.csproj" />
   </ItemGroup>
 
   <ItemGroup>

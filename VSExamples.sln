@@ -29,9 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Http.Jwt",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Common", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Common\Jack.DataScience.Common.csproj", "{6A1238FE-E8AA-467D-AF3A-DA7BE9E9BA73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExample.Data", "VsExample.Data\VsExample.Data.csproj", "{2B994989-CEEC-4830-A8C5-D066FDA514BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExample.Data", "VsExample.Data\VsExample.Data.csproj", "{2B994989-CEEC-4830-A8C5-D066FDA514BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExample.Data.Tests", "VsExample.Data.Tests\VsExample.Data.Tests.csproj", "{1C44208F-7191-4FBD-A711-AD089B0EA4EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExample.Data.Tests", "VsExample.Data.Tests\VsExample.Data.Tests.csproj", "{1C44208F-7191-4FBD-A711-AD089B0EA4EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Data.MongoDB", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Data.MongoDB\Jack.DataScience.Data.MongoDB.csproj", "{7620486D-1FCC-4F2E-8A70-8F01953D7316}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,10 @@ Global
 		{1C44208F-7191-4FBD-A711-AD089B0EA4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C44208F-7191-4FBD-A711-AD089B0EA4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C44208F-7191-4FBD-A711-AD089B0EA4EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7620486D-1FCC-4F2E-8A70-8F01953D7316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7620486D-1FCC-4F2E-8A70-8F01953D7316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7620486D-1FCC-4F2E-8A70-8F01953D7316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7620486D-1FCC-4F2E-8A70-8F01953D7316}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{4E810D2D-93E3-467E-A937-5A11F45317DC} = {80CBFEE3-77EA-4049-8386-A1108310152A}
 		{7B8443B4-6FEA-4070-9E8C-C56F04523F94} = {80CBFEE3-77EA-4049-8386-A1108310152A}
 		{6A1238FE-E8AA-467D-AF3A-DA7BE9E9BA73} = {80CBFEE3-77EA-4049-8386-A1108310152A}
+		{7620486D-1FCC-4F2E-8A70-8F01953D7316} = {80CBFEE3-77EA-4049-8386-A1108310152A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D40CE33-D7AC-4A4A-812A-48AC20FE514D}

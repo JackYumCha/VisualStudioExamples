@@ -23,6 +23,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using VsExample.Data.MySQL;
 using VsExample.Data.PostgresSQL;
 using VsExample.Data.SQLServer;
+using Jack.DataScience.Data.MongoDB;
 
 namespace VsExample.AspAPI
 {
@@ -57,6 +58,9 @@ namespace VsExample.AspAPI
             autoFacContainer.ContainerBuilder.RegisterModule<PostgresSQLModule>();
             autoFacContainer.RegisterOptions<SQLServerOptions>();
             autoFacContainer.ContainerBuilder.RegisterModule<SQLServerModule>();
+
+            autoFacContainer.RegisterOptions<MongoOptions>();
+            autoFacContainer.ContainerBuilder.RegisterModule<MongoModule>();
 
             autoFacContainer.ContainerBuilder.Register(context =>
             {

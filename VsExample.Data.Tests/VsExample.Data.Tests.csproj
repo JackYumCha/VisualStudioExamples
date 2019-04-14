@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Data.MongoDB\Jack.DataScience.Data.MongoDB.csproj" />
-    <ProjectReference Include="..\VsExample.Data\VsExample.Data.csproj" />
+    <ProjectReference Include="..\VsExample.AspAPI\VsExample.AspAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

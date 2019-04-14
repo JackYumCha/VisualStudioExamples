@@ -41,7 +41,7 @@ const routes: Routes = [
         component: AnimalListComponent,
         children:[
           {
-            path: 'view/:name', 
+            path: 'view/:id', 
             component: AnimalViewComponent
           }
         ]

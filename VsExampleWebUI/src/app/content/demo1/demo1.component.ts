@@ -32,7 +32,9 @@ export class Demo1Component implements OnInit {
   }
 
   getAnimal(){
-    this.animalService.GetOneAnimal()
+    this.animalService.GetOneAnimal({
+      _id: 'panda'
+    })
       .subscribe(response => {
         console.log('response:', response);
         this.animal = response;

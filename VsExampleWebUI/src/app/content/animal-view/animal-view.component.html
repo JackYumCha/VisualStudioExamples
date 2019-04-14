@@ -1,4 +1,23 @@
 <ng-container *ngIf="animal">
-  <label>{{animal.Name}}</label>
+  <div flex-spread>
+      <label>{{animal.Name}}</label>
+  <button classic (click)="dialogDeleting.showModal();">Delete</button>
+  </div>
   <img [src]="animal.ImageUrl"/>
+  <dialog #dialogDeleting>
+    <div>
+      <div input>
+        <label>Id</label>
+        <input type="text" [ngModel]="animal._id" readonly/>
+      </div>
+      <div input>
+        <label>Name</label>
+        <input type="text" [ngModel]="animal.Name" readonly/>
+      </div>
+      <div flex-spread>
+        <button classic (click)="dialogDeleting.close();">Cancel</button>
+        <button classic (click)="delete(animal)">Delete</button>
+      </div>
+    </div>
+  </dialog>
 </ng-container>

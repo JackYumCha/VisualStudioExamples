@@ -20,6 +20,8 @@ import { ContentListComponent } from './pagination/content-list/content-list.com
 import { ListPaginatorComponent } from './pagination/list-paginator/list-paginator.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VxExamplesInterceptor } from './services/vsexamples.interceptor';
+import { CreateAnimalComponent } from './content/create-animal/create-animal.component';
+import { EditAnimalComponent } from './content/edit-animal/edit-animal.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { VxExamplesInterceptor } from './services/vsexamples.interceptor';
     AnimalViewComponent,
     ContentListComponent,
     ListPaginatorComponent,
+    CreateAnimalComponent,
+    EditAnimalComponent,
   ],
   imports: [
     BrowserModule,

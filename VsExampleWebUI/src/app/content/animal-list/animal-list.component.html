@@ -2,6 +2,11 @@
   <div>
     <h3>List of Animals</h3>
   </div>
+  <div>
+    <input type="text" [(ngModel)]="listAnimalRequest.Filter"/>
+    <button classic (click)="listAnimals();">Search</button>
+    <button classic (click)="animalAdding={};dialogAdd.showModal();">Add</button>
+  </div>
   <ng-template #animalTemplate let-Name="Name" let-ImageUrl="ImageUrl">
     <div item>
       <label>{{Name}}</label>
@@ -21,3 +26,23 @@
   <router-outlet></router-outlet>
 </section>
 
+<dialog #dialogAdd>
+  <div>
+    <div input>
+      <label>Id</label>
+      <input type="text" [ngModel]="ensureField(animalAdding, '_id', '')" (ngModelChange)="animalAdding._id=$event"/>
+    </div>
+    <div input>
+      <label>Name</label>
+      <input type="text" [ngModel]="ensureField(animalAdding,'Name','')" (ngModelChange)="animalAdding.Name=$event"/>
+    </div>
+    <div input>
+      <label>Url</label>
+      <input type="text" [ngModel]="ensureField(animalAdding,'ImageUrl','')" (ngModelChange)="animalAdding.ImageUrl=$event"/>
+    </div>
+    <div flex-spread>
+      <button classic (click)="dialogAdd.close();">Cancel</button>
+      <button classic (click)="addAnimal(animalAdding);">Add</button>
+    </div>
+  </div>
+</dialog>

@@ -46,3 +46,9 @@ button[classic]{
         background-color: lightgrey;
     }
 }
+
+[flex-spread]{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

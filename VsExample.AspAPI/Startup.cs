@@ -24,6 +24,7 @@ using VsExample.Data.MySQL;
 using VsExample.Data.PostgresSQL;
 using VsExample.Data.SQLServer;
 using Jack.DataScience.Data.MongoDB;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace VsExample.AspAPI
 {
@@ -38,6 +39,7 @@ namespace VsExample.AspAPI
 
         public IConfiguration Configuration { get; }
         public static IContainer ApplicationContainer;
+        public const string SwaggerApiName = "VsExamples";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
@@ -80,6 +82,19 @@ namespace VsExample.AspAPI
                        .AllowAnyMethod()
                    ));
 
+            services.AddSwaggerGen(
+                setup =>
+                    setup.SwaggerDoc(SwaggerApiName,
+                    new Info
+                    {
+                        Version = "1",
+                        Title = "VsExampeles API",
+                        Description = "VsExampeles API",
+                        TermsOfService = "N/A"
+                    })
+                );
+
+
             services.AddMvc().AddJsonOptions(json =>
             {
                 json.SerializerSettings.Error = OnJsonError;
@@ -114,7 +129,17 @@ namespace VsExample.AspAPI
             app.UseCors(CorsPolicy);
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseSwagger();
+            app.UseSwaggerUI(setup => setup.SwaggerEndpoint($"/swagger/{SwaggerApiName}/swagger.json", "Job API"));
+            app.UseMvc(routes =>
+            {
+                routes.MapSpaFallbackRoute("spaFallback", new { controller = "Home", action = "Spa" });
+            });
+            
+            //app.UseMvc();
         }
     }
 }

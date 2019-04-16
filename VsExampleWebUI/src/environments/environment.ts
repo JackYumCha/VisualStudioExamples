@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   mockup: false,
-  baseUrl: 'https://localhost:5001/'
+  baseUrl: 'https://localhost:5001/',
 };
 
 /*

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using VsExample.AspAPI.Dtos;
+using Jack.DataScience.Http.Password;
 using Xunit;
 
 namespace VsExample.Data.Tests
@@ -49,5 +50,43 @@ namespace VsExample.Data.Tests
                 _id = "monkey"
             });
         }
+
+
+        [Fact]
+        public void LoadUserToMongoDB()
+        {
+            var services = BuildContainer();
+            var mongo = services.Resolve<MongoContext>();
+
+            var colUser = mongo.Collection<User>();
+
+            colUser.InsertOne(new User()
+            {
+                _id = "jack",
+                Name = "Jack",
+                DateOfBirth = DateTime.Now.AddYears(-30),
+                PasswordHash = "123".ToMD5Hash(),
+                Roles = new List<RoleEnum>() {  RoleEnum.Administrator, RoleEnum.User}
+            });
+
+            colUser.InsertOne(new User()
+            {
+                _id = "abc",
+                Name = "ABC",
+                DateOfBirth = DateTime.Now.AddYears(-30),
+                PasswordHash = "123".ToMD5Hash(),
+                Roles = new List<RoleEnum>() { RoleEnum.Administrator, RoleEnum.User }
+            });
+
+            colUser.InsertOne(new User()
+            {
+                _id = "jerry",
+                Name = "Jerry",
+                DateOfBirth = DateTime.Now.AddYears(-30),
+                PasswordHash = "456".ToMD5Hash(),
+                Roles = new List<RoleEnum>() { RoleEnum.Administrator, RoleEnum.User }
+            });
+        }
+
     }
 }

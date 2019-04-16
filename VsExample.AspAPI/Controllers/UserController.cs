@@ -10,6 +10,8 @@ using Jack.DataScience.Http.Jwt;
 using VsExample.AspAPI.Utils;
 using Jack.DataScience.Common;
 using VsExample.AspAPI.Authorization;
+using Jack.DataScience.Data.MongoDB;
+using MongoDB.Driver;
 
 namespace VsExample.AspAPI.Controllers
 {
@@ -20,38 +22,51 @@ namespace VsExample.AspAPI.Controllers
         private readonly JwtObjectEncoder jwtObjectEncoder;
         private readonly GenericJwtToken genericJwtToken;
         private readonly AuthOptions authOptions;
+        private readonly MongoContext mongoContext;
 
         public UserController(
             JwtObjectEncoder jwtObjectEncoder,
             GenericJwtToken genericJwtToken,
-            AuthOptions authOptions
+            AuthOptions authOptions,
+            MongoContext mongoContext
             )
         {
             this.jwtObjectEncoder = jwtObjectEncoder;
             this.genericJwtToken = genericJwtToken;
             this.authOptions = authOptions;
+            this.mongoContext = mongoContext;
         }
 
         [HttpPost]
         public GenericJwtToken Login([FromBody] LoginRequest loginRequest)
         {
-            if(loginRequest.Username == "abc" && loginRequest.PasswordHash == "123".ToMD5Hash())
-            {
-                var token = new GenericJwtToken()
-                {
-                    Id = "abc",
-                    Roles = new List<RoleEnum>() { RoleEnum.Administrator },
-                    Valid = true,
-                    Name = "ABC",
-                    ExpiringDate = DateTime.Now.AddDays(authOptions.TokenExpiringDays)
-                };
 
-                // token.Token = jwtObjectEncoder.Encode(token);
-                token = Response.WriteJWTCookie(token);
-                return token;
+            var found = mongoContext.Collection<User>()
+                .AsQueryable()
+                .Where(u => u._id == loginRequest.Username && u.PasswordHash == loginRequest.PasswordHash)
+                .FirstOrDefault();
+
+            if(found == null)
+            {
+                return new GenericJwtToken()
+                {
+                    Valid = false,
+                    Roles = new List<RoleEnum>()
+                };
             }
 
-            return new GenericJwtToken();
+            var token = new GenericJwtToken()
+            {
+                Id = found._id,
+                Roles = found.Roles,
+                Valid = true,
+                Name = found.Name,
+                ExpiringDate = DateTime.Now.AddDays(authOptions.TokenExpiringDays)
+            };
+
+            // token.Token = jwtObjectEncoder.Encode(token);
+            token = Response.WriteJWTCookie(token);
+            return token;
         }
 
         [HttpPost]
@@ -60,6 +75,22 @@ namespace VsExample.AspAPI.Controllers
         {
             if (genericJwtToken.Valid)
             {
+
+
+                var found = mongoContext.Collection<User>()
+                    .AsQueryable()
+                    .Where(u => u._id == genericJwtToken.Id)
+                    .FirstOrDefault();
+
+                if(found == null)
+                {
+                    return new GenericJwtToken()
+                    {
+                        Valid = false,
+                        Roles = new List<RoleEnum>()
+                    };
+                }
+
                 var token = genericJwtToken;
                 token.Token = null;
                 token.ExpiringDate = DateTime.Now.AddDays(authOptions.TokenExpiringDays);

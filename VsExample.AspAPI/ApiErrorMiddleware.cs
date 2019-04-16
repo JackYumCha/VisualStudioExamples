@@ -12,6 +12,11 @@ namespace VsExample.AspAPI
     public class ApiErrorMiddleware
     {
         private readonly RequestDelegate _next;
+        private static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings();
+        static ApiErrorMiddleware()
+        {
+            jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        }
 
         public ApiErrorMiddleware(RequestDelegate next)
         {
@@ -45,7 +50,7 @@ namespace VsExample.AspAPI
                         httpContext.Response.ContentType = "application/json";
                     }
                     httpContext.Response.Headers.Add("api-error", "true");
-                    await httpContext.Response.WriteAsync(JsonConvert.SerializeObject(ex));
+                    await httpContext.Response.WriteAsync(JsonConvert.SerializeObject(ex, jsonSerializerSettings));
                     return;
                 }
             }

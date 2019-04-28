@@ -1,0 +1,1 @@
+dotnet publish VsExample.AspAPI.csproj --framework netcoreapp2.2 -c Release -o ./bin/docker

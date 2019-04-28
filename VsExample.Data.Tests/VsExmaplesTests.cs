@@ -12,18 +12,19 @@ namespace VsExample.Data.Tests
 {
     public class VsExmaplesTests
     {
-        private IContainer BuildContainer()
+        private IContainer BuildContainer(string environment)
         {
-            AutoFacContainer autoFacContainer = new AutoFacContainer();
+            AutoFacContainer autoFacContainer = new AutoFacContainer(environment);
             autoFacContainer.RegisterOptions<MongoOptions>();
             autoFacContainer.ContainerBuilder.RegisterModule<MongoModule>();
             return autoFacContainer.ContainerBuilder.Build();
         }
 
-        [Fact]
-        public void LoadAnimalsToMongoDB()
+        [Theory(DisplayName = "Load Animals To MongoDB")]
+        [InlineData("Production")]
+        public void LoadAnimalsToMongoDB(string environment)
         {
-            var services = BuildContainer();
+            var services = BuildContainer(environment);
             var mongo = services.Resolve<MongoContext>();
 
             var colAnimal = mongo.Collection<Animal>();
@@ -52,10 +53,12 @@ namespace VsExample.Data.Tests
         }
 
 
-        [Fact]
-        public void LoadUserToMongoDB()
+        [Theory(DisplayName = "Load User To MongoDB")]
+        [InlineData("Production")]
+        [InlineData("Development")]
+        public void LoadUserToMongoDB(string environment)
         {
-            var services = BuildContainer();
+            var services = BuildContainer(environment);
             var mongo = services.Resolve<MongoContext>();
 
             var colUser = mongo.Collection<User>();

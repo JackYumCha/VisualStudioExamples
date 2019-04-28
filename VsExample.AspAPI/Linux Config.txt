@@ -1,0 +1,33 @@
+﻿https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-2.2
+
+需要运行:
+dotnet dev-certs https
+
+service file at: /etc/systemd/system
+
+[Unit]
+Description=VS Examples
+
+[Service]
+WorkingDirectory=/app
+ExecStart=/usr/bin/dotnet /app/VsExample.AspAPI.dll
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+SyslogIdentifier=vs-examples
+User=root
+Environment=ASPNETCORE_ENVIRONMENT=Development
+Environment=ASPNETCORE_URLS=http://+:80;https://+:443
+
+[Install]
+WantedBy=multi-user.target
+
+
+run bash:
+systemctl enable vsexamples.service
+service vsexamples start
+
+
+详细日志：
+sudo journalctl -fu vsexamples.service --since today
+

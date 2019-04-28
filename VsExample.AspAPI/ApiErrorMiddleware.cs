@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Serilog;
 
 namespace VsExample.AspAPI
 {
@@ -13,6 +14,7 @@ namespace VsExample.AspAPI
     {
         private readonly RequestDelegate _next;
         private static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings();
+        private static ILogger logger = Program.GetLogger();
         static ApiErrorMiddleware()
         {
             jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -31,6 +33,8 @@ namespace VsExample.AspAPI
             }
             catch (Exception ex)
             {
+                logger.Error(ex, "Exception Caught by ApiErrorMiddleware");
+
                 if (httpContext.Response.HasStarted)
                 {
                     Console.WriteLine($"The error handling middleware has started. ");

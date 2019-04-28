@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -25,13 +24,18 @@ using VsExample.Data.PostgresSQL;
 using VsExample.Data.SQLServer;
 using Jack.DataScience.Data.MongoDB;
 using Swashbuckle.AspNetCore.Swagger;
+using Jack.DataScience.Logging.Serilog;
+using Serilog;
 
 namespace VsExample.AspAPI
 {
     public class Startup
     {
+        static ILogger logger = Program.GetLogger();
+
         public Startup(IConfiguration configuration)
         {
+            logger.Information($"{nameof(Startup)}");
             Configuration = configuration;
         }
 
@@ -45,8 +49,11 @@ namespace VsExample.AspAPI
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
 
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-       
+            logger.Information($"{nameof(ConfigureServices)} Start");
+            var environment = Environment.GetEnvironmentVariable(Program.ASPNETCORE_ENVIRONMENT);
+
+            logger.Information($"AutoFacContainer Environment: {environment}");
+            logger.Information($"AutoFacContainer Current Path: {AppContext.BaseDirectory}");
             AutoFacContainer autoFacContainer = new AutoFacContainer(environment);
 
             autoFacContainer.RegisterOptions<AuthOptions>();
@@ -61,8 +68,11 @@ namespace VsExample.AspAPI
             autoFacContainer.RegisterOptions<SQLServerOptions>();
             autoFacContainer.ContainerBuilder.RegisterModule<SQLServerModule>();
 
+
             autoFacContainer.RegisterOptions<MongoOptions>();
             autoFacContainer.ContainerBuilder.RegisterModule<MongoModule>();
+
+            autoFacContainer.ContainerBuilder.RegisterInstance(Program.GetLogger());
 
             autoFacContainer.ContainerBuilder.Register(context =>
             {
@@ -104,17 +114,22 @@ namespace VsExample.AspAPI
 
             autoFacContainer.ContainerBuilder.Populate(services);
             ApplicationContainer = autoFacContainer.ContainerBuilder.Build();
+
+            logger.Information($"{nameof(ConfigureServices)} End");
             return new AutofacServiceProvider(ApplicationContainer);
         }
 
         public void OnJsonError(object source, ErrorEventArgs error)
         {
+            logger.Information($"{nameof(OnJsonError)}");
             Debugger.Break();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            logger.Information($"{nameof(Configure)} Start");
             app.UseApiErrorMiddleware();
             if (env.IsDevelopment())
             {
@@ -138,8 +153,10 @@ namespace VsExample.AspAPI
             {
                 routes.MapSpaFallbackRoute("spaFallback", new { controller = "Home", action = "Spa" });
             });
-            
+
             //app.UseMvc();
+
+            logger.Information($"{nameof(Configure)} End");
         }
     }
 }

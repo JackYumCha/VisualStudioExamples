@@ -1,0 +1,13 @@
+﻿Path:
+C:\Program Files\dotnet\dotnet.exe
+
+Startup Directory:
+%GitHubDir%\VisualStudioExamples\VsExample.AspAPI\bin\publish
+
+Arguments:
+%GitHubDir%\VisualStudioExamples\VsExample.AspAPI\bin\publish\VsExample.AspAPI.dll --env Development --urls http://+:5000;https://+:5001
+
+Hostname	dispute-heart.bnr.la
+Primary IP	103.230.157.89
+User	root
+Password	ywbfZpyP

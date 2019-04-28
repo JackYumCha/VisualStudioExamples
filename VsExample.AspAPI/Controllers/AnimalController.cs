@@ -9,6 +9,7 @@ using VsExample.AspAPI.Authorization;
 using VsExample.AspAPI.Dtos;
 using MongoDB.Driver;
 using System.Text.RegularExpressions;
+using Serilog;
 
 namespace VsExample.AspAPI.Controllers
 {
@@ -16,9 +17,12 @@ namespace VsExample.AspAPI.Controllers
     public class AnimalController : Controller
     {
         private readonly MongoContext mongoContext;
-        public AnimalController(MongoContext mongoContext)
+        private readonly ILogger logger;
+        public AnimalController(MongoContext mongoContext, ILogger logger)
         {
             this.mongoContext = mongoContext;
+            this.logger = logger;
+            logger.Information($"Constructor of {nameof(AnimalController)}");
         }
 
         // npm run api
@@ -27,6 +31,7 @@ namespace VsExample.AspAPI.Controllers
         [Role(RoleEnum.User, RoleEnum.Administrator)]
         public Animal GetOneAnimal([FromBody] GetAnimalRequest getAnimalRequest)
         {
+            logger.Warning($"{nameof(GetOneAnimal)}: {getAnimalRequest._id}");
             return mongoContext.Collection<Animal>().GetOneById(getAnimalRequest._id);
         }
 
@@ -34,6 +39,7 @@ namespace VsExample.AspAPI.Controllers
         [Role(RoleEnum.User, RoleEnum.Administrator)]
         public Animal CreateOneAnimal([FromBody] Animal animal)
         {
+            logger.Information($"{nameof(CreateOneAnimal)}: {animal.Name}");
             mongoContext.Collection<Animal>().UpsertOne(animal);
             return animal;
         }
@@ -42,6 +48,7 @@ namespace VsExample.AspAPI.Controllers
         [Role(RoleEnum.User, RoleEnum.Administrator)]
         public Animal DeleteOneAnimalById([FromBody] Animal animal)
         {
+            logger.Information($"{nameof(DeleteOneAnimalById)}: {animal._id}");
             mongoContext.Collection<Animal>().DeleteOneById(animal._id);
             return animal;
         }
@@ -55,6 +62,7 @@ namespace VsExample.AspAPI.Controllers
         [Role(RoleEnum.User, RoleEnum.Administrator)]
         public ListAnimalResponse ListAnimal([FromBody] ListAnimalRequest request)
         {
+            logger.Information($"{nameof(ListAnimal)}");
             var result = new ListAnimalResponse();
 
             IQueryable<Animal> linq = mongoContext.Collection<Animal>()

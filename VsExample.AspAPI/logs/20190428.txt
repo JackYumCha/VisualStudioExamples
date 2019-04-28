@@ -1,0 +1,41 @@
+2019-04-28 14:18:06.351 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:18:06.496 +10:00 [Information] ListAnimal
+2019-04-28 14:21:57.924 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:21:58.280 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:24:48.459 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:24:48.719 +10:00 [Warning] GetOneAnimal: panda
+2019-04-28 14:27:08.176 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:27:08.534 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:27:08.559 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:27:08.622 +10:00 [Warning] GetOneAnimal: panda
+2019-04-28 14:30:47.703 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:30:47.988 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:35:40.107 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:40.382 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:35:41.896 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:41.941 +10:00 [Warning] GetOneAnimal: panda
+2019-04-28 14:35:42.740 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:42.778 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:35:43.559 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:43.600 +10:00 [Warning] GetOneAnimal: panda
+2019-04-28 14:35:44.229 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:44.273 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:35:44.819 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:44.857 +10:00 [Warning] GetOneAnimal: panda
+2019-04-28 14:35:58.189 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:58.245 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:35:58.798 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:58.831 +10:00 [Warning] GetOneAnimal: panda
+2019-04-28 14:35:59.316 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:59.348 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:35:59.869 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:35:59.899 +10:00 [Warning] GetOneAnimal: panda
+2019-04-28 14:36:00.417 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:36:00.454 +10:00 [Warning] GetOneAnimal: lion
+2019-04-28 14:36:00.883 +10:00 [Information] Constructor of AnimalController
+2019-04-28 14:36:00.913 +10:00 [Warning] GetOneAnimal: panda
+2019-04-28 14:42:42.908 +10:00 [Information] VsExample.AspAPI Startup: 
+2019-04-28 14:42:43.137 +10:00 [Information] VsExample.AspAPI ASPNETCORE_ENVIRONMENT: Development
+2019-04-28 14:51:37.828 +10:00 [Information] VsExample.AspAPI Startup: VsExample.AspAPI.csproj, --urls, http://+:8001;https://+:8002
+2019-04-28 14:51:37.899 +10:00 [Information] VsExample.AspAPI ASPNETCORE_ENVIRONMENT: Development
+2019-04-28 14:51:37.900 +10:00 [Information] VsExample.AspAPI ASPNETCORE_URLS: http://+:8001;https://+:8002

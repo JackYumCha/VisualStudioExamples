@@ -1,0 +1,1 @@
+dotnet run VsExample.AspAPI.csproj --urls http://+:8001;https://+:8002

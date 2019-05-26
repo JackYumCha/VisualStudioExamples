@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Console", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExample.AWSFunction", "VsExample.AWSFunction\VsExample.AWSFunction.csproj", "{6C0ECF09-B9BD-4FB5-9EC2-D96505C0C312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExamples.Athena", "VsExamples.Athena\VsExamples.Athena.csproj", "{EB7B67EA-9AAC-4420-86FE-99F0CE0E165C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExamples.Athena", "VsExamples.Athena\VsExamples.Athena.csproj", "{EB7B67EA-9AAC-4420-86FE-99F0CE0E165C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Data.CSV", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Data.CSV\Jack.DataScience.Data.CSV.csproj", "{78729527-009E-4819-9012-20BD0A124F15}"
 EndProject
@@ -55,9 +55,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Storage.SF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Storage.AzureBlobStorage", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Storage.AzureBlobStorage\Jack.DataScience.Storage.AzureBlobStorage.csproj", "{F3F76C7A-554C-4035-899E-F7DB95B575D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExamples.Athena.Tests", "VsExamples.Athena.Tests\VsExamples.Athena.Tests.csproj", "{6CA69F81-6D53-4818-9987-5D579C415BF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExamples.Athena.Tests", "VsExamples.Athena.Tests\VsExamples.Athena.Tests.csproj", "{6CA69F81-6D53-4818-9987-5D579C415BF3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExamples.Athena.EtlFunction", "VsExamples.Athena.EtlFunction\VsExamples.Athena.EtlFunction.csproj", "{3770C78A-8385-439A-9BCC-B3C208A868DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExamples.Athena.EtlBatch", "VsExamples.Athena.EtlBatch\VsExamples.Athena.EtlBatch.csproj", "{636A09BB-9F8C-4611-A378-C965C145572D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -173,6 +175,10 @@ Global
 		{3770C78A-8385-439A-9BCC-B3C208A868DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3770C78A-8385-439A-9BCC-B3C208A868DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3770C78A-8385-439A-9BCC-B3C208A868DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{636A09BB-9F8C-4611-A378-C965C145572D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{636A09BB-9F8C-4611-A378-C965C145572D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{636A09BB-9F8C-4611-A378-C965C145572D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{636A09BB-9F8C-4611-A378-C965C145572D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

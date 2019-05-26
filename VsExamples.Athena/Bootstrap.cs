@@ -7,6 +7,7 @@ using System.Text;
 using Jack.DataScience.Storage.SFTP;
 using Jack.DataScience.Storage.AzureBlobStorage;
 using Autofac;
+using Jack.DataScience.Data.AWSAthena;
 
 namespace VsExamples.Athena
 {
@@ -17,6 +18,7 @@ namespace VsExamples.Athena
             autoFacContainer.RegisterOptions<SshOptions>();
             autoFacContainer.RegisterOptions<AWSS3Options>();
             autoFacContainer.RegisterOptions<AzureBlobStorageOptions>();
+            autoFacContainer.RegisterOptions<AWSAthenaOptions>();
             autoFacContainer.ContainerBuilder.RegisterModule<VsExamplesAthenaModule>();
             return autoFacContainer;
         }

@@ -13,6 +13,7 @@ namespace VsExamples.Athena
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<DataGenerator>();
+            builder.RegisterType<SftpEtl>();
             builder.RegisterModule<SshModule>();
             builder.RegisterModule<AWSS3Module>();
             builder.RegisterModule<AzureBlobStorageModule>();

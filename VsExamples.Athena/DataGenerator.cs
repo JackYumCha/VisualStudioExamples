@@ -113,7 +113,7 @@ namespace VsExamples.Athena
                 }
             }
 
-
+            sftpClient.Disconnect();
         }
     }
 }

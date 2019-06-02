@@ -59,11 +59,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExamples.Athena.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExamples.Athena.EtlFunction", "VsExamples.Athena.EtlFunction\VsExamples.Athena.EtlFunction.csproj", "{3770C78A-8385-439A-9BCC-B3C208A868DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsExamples.Athena.EtlBatch", "VsExamples.Athena.EtlBatch\VsExamples.Athena.EtlBatch.csproj", "{636A09BB-9F8C-4611-A378-C965C145572D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VsExamples.Athena.EtlBatch", "VsExamples.Athena.EtlBatch\VsExamples.Athena.EtlBatch.csproj", "{636A09BB-9F8C-4611-A378-C965C145572D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Data.AWSAthena", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Data.AWSAthena\Jack.DataScience.Data.AWSAthena.csproj", "{DFBE7F3C-34D0-4E3B-983F-AD1B6E8CB641}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Data.Converters", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Data.Converters\Jack.DataScience.Data.Converters.csproj", "{A1087482-2D79-4901-9055-FC009A9E0387}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jack.DataScience.Data.AzureTableStorage", "..\Jack.DataScience\Jack.DataScience\Jack.DataScience.Data.AzureTableStorage\Jack.DataScience.Data.AzureTableStorage.csproj", "{5943F6A4-AA40-4533-A237-917758F23BDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -191,6 +193,10 @@ Global
 		{A1087482-2D79-4901-9055-FC009A9E0387}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1087482-2D79-4901-9055-FC009A9E0387}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1087482-2D79-4901-9055-FC009A9E0387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5943F6A4-AA40-4533-A237-917758F23BDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5943F6A4-AA40-4533-A237-917758F23BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5943F6A4-AA40-4533-A237-917758F23BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5943F6A4-AA40-4533-A237-917758F23BDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -211,6 +217,7 @@ Global
 		{F3F76C7A-554C-4035-899E-F7DB95B575D2} = {80CBFEE3-77EA-4049-8386-A1108310152A}
 		{DFBE7F3C-34D0-4E3B-983F-AD1B6E8CB641} = {80CBFEE3-77EA-4049-8386-A1108310152A}
 		{A1087482-2D79-4901-9055-FC009A9E0387} = {80CBFEE3-77EA-4049-8386-A1108310152A}
+		{5943F6A4-AA40-4533-A237-917758F23BDA} = {80CBFEE3-77EA-4049-8386-A1108310152A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D40CE33-D7AC-4A4A-812A-48AC20FE514D}

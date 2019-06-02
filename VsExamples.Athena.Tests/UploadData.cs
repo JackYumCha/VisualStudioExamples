@@ -22,5 +22,20 @@ namespace VsExamples.Athena.Tests
 
             Debugger.Break();
         }
+
+
+        [Fact(DisplayName = "Upload Data to AzureBlobStorage")]
+        public async void UploadDataToAzureBlobStorage()
+        {
+            AutoFacContainer autoFacContainer = new AutoFacContainer("dev");
+            autoFacContainer.Setup();
+            var services = autoFacContainer.ContainerBuilder.Build();
+
+            var dataGenerator = services.Resolve<DataGenerator>();
+
+            await dataGenerator.WriteToBlobStorageContainer();
+
+            Debugger.Break();
+        }
     }
 }

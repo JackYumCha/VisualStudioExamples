@@ -1,9 +1,11 @@
 ﻿using Jack.DataScience.Data.CSV;
 using Jack.DataScience.Storage.AWSS3;
+using Jack.DataScience.Storage.AzureBlobStorage;
 using Renci.SshNet;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace VsExamples.Athena
 {
@@ -11,11 +13,13 @@ namespace VsExamples.Athena
     {
         private readonly SftpClient sftpClient;
         private readonly AWSS3API awsS3API;
+        private readonly AzureBlobStorageAPI azureBlobStorageAPI;
 
-        public DataGenerator(SftpClient sftpClient, AWSS3API awsS3API)
+        public DataGenerator(SftpClient sftpClient, AWSS3API awsS3API, AzureBlobStorageAPI azureBlobStorageAPI)
         {
             this.sftpClient = sftpClient;
             this.awsS3API = awsS3API;
+            this.azureBlobStorageAPI = azureBlobStorageAPI;
         }
 
 
@@ -114,6 +118,41 @@ namespace VsExamples.Athena
             }
 
             sftpClient.Disconnect();
+        }
+
+        public async Task WriteToBlobStorageContainer()
+        {
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+
+                    var products = GenerateInventoryData();
+                    memoryStream.WriteCsv(products);
+
+                    using (var streamToUpload = new MemoryStream(memoryStream.ToArray()))
+                    {
+                        await azureBlobStorageAPI.Upload("products.csv", streamToUpload);
+                    }
+                }
+            }
+
+            {
+                for (DateTime date = DateTime.UtcNow.AddDays(-10); date < DateTime.UtcNow; date = date.AddDays(1))
+                {
+
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+
+                        var sales = GenerateSaleData();
+                        memoryStream.WriteCsv(sales);
+                        using (var streamToUpload = new MemoryStream(memoryStream.ToArray()))
+                        {
+                            await azureBlobStorageAPI.Upload($"sale-{date.ToString("yyyy-MM-dd")}.csv", streamToUpload);
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

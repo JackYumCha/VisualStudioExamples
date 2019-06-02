@@ -20,6 +20,7 @@ namespace VsExamples.Athena
             autoFacContainer.RegisterOptions<AzureBlobStorageOptions>();
             autoFacContainer.RegisterOptions<AWSAthenaOptions>();
             autoFacContainer.ContainerBuilder.RegisterModule<VsExamplesAthenaModule>();
+            autoFacContainer.ContainerBuilder.RegisterModule<AzureBlobStorageModule>();
             return autoFacContainer;
         }
     }

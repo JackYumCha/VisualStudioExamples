@@ -16,6 +16,8 @@ namespace VsExamples.Athena.Tests
             autoFacContainer.Setup();
             var services = autoFacContainer.ContainerBuilder.Build();
 
+            var athenaOptions = services.Resolve<AthenaOptions>();
+
             var dataGenerator = services.Resolve<DataGenerator>();
 
             dataGenerator.WriteDataToSFTP();

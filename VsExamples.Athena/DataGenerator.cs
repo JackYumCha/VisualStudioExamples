@@ -1,4 +1,5 @@
-﻿using Jack.DataScience.Data.CSV;
+﻿using Autofac;
+using Jack.DataScience.Data.CSV;
 using Jack.DataScience.Storage.AWSS3;
 using Jack.DataScience.Storage.AzureBlobStorage;
 using Renci.SshNet;
@@ -11,15 +12,21 @@ namespace VsExamples.Athena
 {
     public class DataGenerator
     {
-        private readonly SftpClient sftpClient;
-        private readonly AWSS3API awsS3API;
-        private readonly AzureBlobStorageAPI azureBlobStorageAPI;
+        //private readonly SftpClient sftpClient;
+        //private readonly AWSS3API awsS3API;
+        //private readonly AzureBlobStorageAPI azureBlobStorageAPI;
+        private readonly IComponentContext componentContext;
 
-        public DataGenerator(SftpClient sftpClient, AWSS3API awsS3API, AzureBlobStorageAPI azureBlobStorageAPI)
+        public DataGenerator(
+            //SftpClient sftpClient, 
+            //AWSS3API awsS3API, 
+            //AzureBlobStorageAPI azureBlobStorageAPI,
+            IComponentContext componentContext)
         {
-            this.sftpClient = sftpClient;
-            this.awsS3API = awsS3API;
-            this.azureBlobStorageAPI = azureBlobStorageAPI;
+            //this.sftpClient = sftpClient;
+            //this.awsS3API = awsS3API;
+            //this.azureBlobStorageAPI = azureBlobStorageAPI;
+            this.componentContext = componentContext;
         }
 
 
@@ -88,6 +95,10 @@ namespace VsExamples.Athena
 
         public void WriteDataToSFTP()
         {
+            SftpClient sftpClient = null;
+
+            if (!componentContext.TryResolve(out sftpClient)) return;
+
             sftpClient.Connect();
 
             using (MemoryStream memoryStream = new MemoryStream())
@@ -122,6 +133,11 @@ namespace VsExamples.Athena
 
         public async Task WriteToBlobStorageContainer()
         {
+
+            AzureBlobStorageAPI azureBlobStorageAPI = null;
+
+            if (!componentContext.TryResolve(out azureBlobStorageAPI)) throw new Exception("Can't resolve AzureBlobStorageAPI!");
+
             {
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
@@ -153,6 +169,16 @@ namespace VsExamples.Athena
                 }
             }
 
+        }
+
+        public AthenaOptions TryResolveAthenaOptions()
+        {
+            AthenaOptions athenaOptions = null;
+            if(componentContext.TryResolve(out athenaOptions))
+            {
+                return athenaOptions;
+            }
+            return athenaOptions;
         }
     }
 }
